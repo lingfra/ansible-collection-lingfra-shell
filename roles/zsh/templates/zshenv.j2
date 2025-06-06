@@ -1,0 +1,35 @@
+{{ ansible_managed | ansible.builtin.comment }}
+
+# ---------- XDG Base Directory ----------
+
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_STATE_HOME="${HOME}/.local/state"
+
+# ---------- ZSH Configuration ----------
+
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+{% if not zsh_conf_enable_newuser_wizard %}
+
+if (( EUID > 0 )); then
+  # Disables the new user install wizard
+  zsh-newuser-install() { }
+fi
+{% endif %}
+{% if (zsh_conf_global_editor is defined) %}
+
+# ---------- Global Editor ----------
+
+if [ -f "{{ zsh_conf_global_editor }}" ]; then
+  export EDITOR="{{ zsh_conf_global_editor }}"
+  export VISUAL="{{ zsh_conf_global_editor }}"
+  export SYSTEMD_EDITOR="{{ zsh_conf_global_editor }}"
+fi
+{% endif %}
+
+# ---------- Application Files ----------
+
+{% for k, v in zsh_conf_xdg_app_env_vars.items() %}
+export {{ k }}="{{ v }}"
+{% endfor %}

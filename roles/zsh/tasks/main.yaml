@@ -1,0 +1,28 @@
+---
+# tasks file for lingfra.shell.zsh
+
+# ---------- Configuration ----------
+
+- name: "Ensure /etc/zsh exist"
+  ansible.builtin.file:
+    path: /etc/zsh
+    state: directory
+    mode: "0755"
+    owner: root
+    group: root
+  become: true
+
+- name: "Template ZSH config files"
+  ansible.builtin.template:
+    src: "{{ config_file ~ '.j2' }}"
+    dest: "/etc/zsh/{{ config_file }}"
+    mode: "0644"
+    owner: root
+    group: root
+  become: true
+  diff: true
+  loop:
+    - zshenv
+    - zshrc
+  loop_control:
+    loop_var: config_file

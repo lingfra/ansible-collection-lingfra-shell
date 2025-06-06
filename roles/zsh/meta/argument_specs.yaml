@@ -1,0 +1,38 @@
+---
+# argument specs file for lingfra.shell.zsh
+
+argument_specs:
+  main:
+    short_description: "Main entry point for lingfra.shell.zsh role"
+    description:
+      - "This role is used to add a system wide ZSH configuration in `/etc/zsh`."
+      - "It is intended to make a compromise between usability and a lightweight design."
+    author:
+      - "lingling"
+    options:
+      zsh_conf_enable_newuser_wizard:
+        type: "bool"
+        default: false
+        description:
+          - "Enables the configuration wizard for new users from the `zsh/newuser` module."
+          - "When set to `false` an empty function `zsh-newuser-install` is created, which prevents the real function to run."
+          - "It defaults to `false`, because on a server it is properly undesired to create user specific configurations."
+      zsh_conf_global_editor:
+        type: "str"
+        required: false
+        description:
+          - "If this is specified the environment variables `EDITOR`, `VISUAL` and `SYSTEMD_EDITOR` will be globally set."
+          - "Specify the full path of the binary, e. g. `/usr/bin/nvim`."
+      zsh_conf_history_size:
+        type: "int"
+        default: 2000
+        description:
+          - "The size of zsh history."
+      zsh_conf_keybindings:
+        type: "str"
+        default: "emacs"
+        choices:
+          - "emacs"
+          - "vi"
+        description:
+          - "The keybindings mode for ZSH."

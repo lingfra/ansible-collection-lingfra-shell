@@ -1,0 +1,13 @@
+---
+# meta file for lingfra.shell.zsh
+
+dependencies: []
+
+galaxy_info:
+  author: lingling
+  description: Configures ZSH system wide.
+  license: The Unlicense
+
+  min_ansible_version: "2.15"
+
+  platforms: []

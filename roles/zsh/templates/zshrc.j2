@@ -1,0 +1,121 @@
+{{ ansible_managed | ansible.builtin.comment }}
+
+# ---------- XDG Base Directory Compliant Paths ----------
+
+# Anonymous function for local variable scope
+function {
+  # XDG Compliant paths
+  local -a dirs=(
+    "${XDG_CONFIG_HOME}/zsh"
+    "${XDG_CACHE_HOME}/zsh"
+    "${XDG_DATA_HOME}/zsh"
+    "${XDG_STATE_HOME}/zsh"
+    )
+
+  # Environment variables from zshenv
+  local -a files=(
+{% for env_var in zsh_conf_xdg_app_env_vars.keys() %}
+      {{ env_var }}
+{% endfor %}
+    )
+
+  # Add parent directories of env vars to dirs array
+  local file
+  for file in "${files[@]}"; do
+    if [[ -n "${(P)file}" ]]; then
+      dirs+=("$(dirname -- "${(P)file}")")
+    fi
+  done
+
+  # Create all non-existing directories
+  local dir
+  for dir in "${dirs[@]}"; do
+    [[ -e "${dir}" ]] || /usr/bin/mkdir -p -- "${dir}"
+  done
+}
+
+# ---------- Prompt ----------
+
+# Different color for superuser, system users and normal users
+prompt_user_color () {
+	if [[ "$UID" -eq 0 ]]; then
+		print -Pn "%B%F{red}%n%f%b"
+	elif [[ "${UID}" -lt 1000 ]]; then
+		print -Pn "%B%F{cyan}%n%f%b"
+	else
+		print -Pn "%B%F{yellow}%n%f%b"
+	fi
+}
+PROMPT="
+%(?..[%B%?%b] )$(prompt_user_color)@%B%F{red}%M%f%b %F{blue}%~%f 
+%(?.%B%F{green}>%f%b.%B%F{red}>%f%b) "
+
+# ---------- History ----------
+
+export HISTCONTROL="ignoreboth"
+
+# Do not save duplicate commands in the history
+setopt HIST_SAVE_NO_DUPS          
+
+HISTFILE=${XDG_STATE_HOME}/zsh/history
+HISTSIZE={{ zsh_conf_history_size }}   # internal history
+SAVEHIST={{ zsh_conf_history_size }}   # history file
+
+# ---------- CLI Customization ----------
+
+{% if (zsh_conf_keybindings == "emacs") %}
+# Emacs keybindings
+bindkey -e
+{% else %}
+# Vim keybindings
+bindkey -v
+{% endif %}
+
+export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
+
+# ---------- Colorize ----------
+
+alias diff='diff --color=auto'
+
+alias grep='grep --color=auto'
+
+alias ip='ip --color=auto'
+
+alias ls='ls --color=auto --human'
+alias ll='ls --color=auto --human -l'
+alias la='ls --color=auto --human -l --all'
+
+if command -v /usr/bin/tree 2>&1 > /dev/null; then
+  alias tree='tree -C'
+fi
+
+export LESS='-R --use-color'
+
+# ---------- Completion ----------
+
+zstyle :compinstall filename "${ZDOTFIR}/.zshrc"
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME}/zsh/zcompcache"
+zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:*:*:*:descriptions' format '%F{yellow}-- %d --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{cyan}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+autoload -Uz compinit
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+
+# Shift-TAB for reverse menu selecting
+bindkey '^[[Z' reverse-menu-complete
+
+# ---------- Directory Stack ----------
+
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index

@@ -1,0 +1,7 @@
+---
+# vars file for lingfra.shell.zsh
+
+zsh_conf_xdg_app_env_vars:
+  LESSHISTFILE: "${XDG_STATE_HOME}/less/history"
+  PSQL_HISTORY: "${XDG_STATE_HOME}/psql/history"
+  SQLITE_HISTORY: "${XDG_STATE_HOME}/sqlite/history"
