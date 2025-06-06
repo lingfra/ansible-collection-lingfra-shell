@@ -1,0 +1,20 @@
+---
+driver:
+  name: podman
+platforms:
+  - name: shell-default-archlinux
+    dockerfile: Containerfile.archlinux
+    image: docker.io/library/archlinux:latest
+    pre_build_image: false
+  - name: shell-default-debian12
+    image: docker.io/library/debian:12
+    pre_build_image: false
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      callbacks_enabled: ansible.posix.profile_tasks
+      stdout_callback: ansible.posix.debug
+  playbooks:
+    prepare: prepare.yml
+    converge: converge.yml
