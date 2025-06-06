@@ -1,0 +1,27 @@
+---
+namespace: lingfra
+name: shell
+version: "1.0.0"
+readme: README.md
+authors:
+  - lingling <lingling+dev@posteo.de>
+description: Template for an Ansible collection.
+license_file: "LICENSE"
+repository: https://codeberg.org/lingfra/ansible-collection-lingfra-libvirt
+issues: https://codeberg.org/lingfra/ansible-collection-lingfra-libvirt/issues
+documentation: https://codeberg.org/lingfra/ansible-collection-lingfra-libvirt
+tags:
+  - linux
+  - unix
+  - cli
+  - terminal
+  - shell
+dependencies: {}
+build_ignore:
+  - "*.tar.gz"
+  - ".aar_doc"
+  - ".aar_doc.yml"
+  - ".git"
+  - ".gitignore"
+  - ".gitmodules"
+  - "molecule"
