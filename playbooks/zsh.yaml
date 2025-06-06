@@ -1,0 +1,12 @@
+---
+# Playbook lingfra.system.zsh
+
+- name: "Configure ZSH"
+  hosts: "{{ target | default('all') }}"
+  gather_facts: true
+  tags:
+    - zsh
+  tasks:
+    - name: "Import role lingfra.shell.zsh"
+      ansible.builtin.import_role:
+        name: lingfra.shell.zsh
