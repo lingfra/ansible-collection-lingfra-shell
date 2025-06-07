@@ -1,10 +1,19 @@
 # Ansible Collection - lingfra.shell
 
-An Ansible collection template.
+An Ansible collection to enroll a system wide shell configuration.
+
+## Included Content
+
+### Roles
+
+- [zsh](./roles/zsh/README.md): Configures ZSH system wide.
+
+### Playbooks
+
+- [zsh](./playbooks/zsh.yaml)
 
 ## Installation
 
-<!---
 This collection is published to [Ansible Galaxy](https://galaxy.ansible.com). It
 can be installed using the Ansible Galaxy CLI:
 
@@ -19,7 +28,7 @@ It is also possible to specify this collection in the `requirements.yaml` (or
 ---
 collections:
   - name: lingfra.shell
-    version: "vX.Y.Z"   # optionally specify version
+    version: "v0.1.0"   # optionally specify version
 ```
 
 And use the Ansible Galaxy CLI to install the definitions from the requirements
@@ -30,10 +39,6 @@ ansible-galaxy install -r requirements.yaml
 ```
 
 Alternatively, the collection can be obtained from the Git repository. This may
-be desirable to get the latest development version. The following
-`requirements.yaml` entry, can be used to download directly from Git:
--->
-The collection can be obtained from the Git repository. This may
 be desirable to get the latest development version. The following
 `requirements.yaml` entry, can be used to download directly from Git:
 
@@ -48,6 +53,21 @@ collections:
 For more information, see the [Installing
 collections](https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html)
 section of the Ansible documentation.
+
+## Usage
+
+This collection can be used by importing the provided playbook:
+
+```yaml
+- name: Import playbook lingfra.shell.zsh
+  ansible.builtin.import_playbook: lingfra.shell.zsh
+  vars:
+    zsh_conf_history_size: 10000
+    zsh_conf_global_editor: /usr/bin/nvim
+    zsh_user_list:
+      - alice
+      - bob
+```
 
 ## Documentation
 
