@@ -8,6 +8,10 @@ zsh_conf_enable_newuser_wizard: false
 zsh_conf_history_size: 2000
 # The keybindings mode for ZSH.
 zsh_conf_keybindings: emacs
+# Theme for [vivid](https://github.com/sharkdp/vivid).
+# The coices selection is for vivid 0.10.
+# Some themes maybe not available on distributions providing an older vivid version.
+zsh_conf_vivid_theme: one-dark
 # Whether the ZSH system packages should be installed or not.
 zsh_install: true
 # Set ZSH as default shell for all users specified in this list.

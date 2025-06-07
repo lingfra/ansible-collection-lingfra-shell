@@ -75,6 +75,10 @@ export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
 # ---------- Colorize ----------
 
+if command -v vivid 2>&1 > /dev/null; then
+  export LS_COLORS="$(vivid generate {{ zsh_conf_vivid_theme }})"
+fi
+
 alias diff='diff --color=auto'
 
 alias grep='grep --color=auto'

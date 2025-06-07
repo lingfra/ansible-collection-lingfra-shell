@@ -3,6 +3,7 @@
 
 zsh_install_package_list:
   - fzf
+  - vivid
   - zsh
   - zsh-autosuggestions
   - zsh-syntax-highlighting
