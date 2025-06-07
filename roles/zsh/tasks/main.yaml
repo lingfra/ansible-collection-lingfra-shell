@@ -1,6 +1,29 @@
 ---
 # tasks file for lingfra.shell.zsh
 
+- name: "Include OS specific variables"
+  ansible.builtin.include_vars:
+    file: "{{ lookup('ansible.builtin.first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}.yaml"
+        - "{{ ansible_os_family }}.yaml"
+        - "defaults.yaml"
+      paths:
+        - "vars"
+
+# ---------- Installation ----------
+
+- name: "Install ZSH packages"
+  ansible.builtin.package:
+    name: "{{ zsh_install_package_list }}"
+    state: present
+    update_cache: true
+  become: true
+  when:
+    - zsh_install
+
 # ---------- Configuration ----------
 
 - name: "Ensure /etc/zsh exist"

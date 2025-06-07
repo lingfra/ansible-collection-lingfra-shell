@@ -8,3 +8,5 @@ zsh_conf_enable_newuser_wizard: false
 zsh_conf_history_size: 2000
 # The keybindings mode for ZSH.
 zsh_conf_keybindings: emacs
+# Whether the ZSH system packages should be installed or not.
+zsh_install: true

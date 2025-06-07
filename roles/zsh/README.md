@@ -43,6 +43,12 @@ The keybindings mode for ZSH.
 - `emacs`
 - `vi`
 
+#### `zsh_install`
+
+Type: `bool`, Default: `True`.
+
+Whether the ZSH system packages should be installed or not.
+
 ## Dependencies
 
 None.

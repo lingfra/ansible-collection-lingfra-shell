@@ -36,3 +36,8 @@ argument_specs:
           - "vi"
         description:
           - "The keybindings mode for ZSH."
+      zsh_install:
+        type: "bool"
+        default: true
+        description:
+          - "Whether the ZSH system packages should be installed or not."
