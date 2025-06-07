@@ -119,3 +119,17 @@ setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+# ---------- Syntax Highlighting ----------
+
+# Should be sourced at a very late, see:
+#
+#  https://github.com/zsh-users/zsh-syntax-highlighting
+
+if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+	# Arch Linux path
+	. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+	# Debian path
+	. /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi

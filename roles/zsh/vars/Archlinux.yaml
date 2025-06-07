@@ -1,0 +1,6 @@
+---
+# vars file for lingfra.shell.zsh
+
+zsh_install_package_list:
+  - zsh
+  - zsh-syntax-highlighting
