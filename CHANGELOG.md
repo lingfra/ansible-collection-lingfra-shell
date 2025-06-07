@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.1] - 202X-XX-XX
+## [0.1.0] - 2025-06-07
 
-### Added
+Adds the zsh role, with the following features:
 
-[Unreleased]: https://codeberg.org/lingfra/ansible-collection-lingfra-shell/compare/v0.0.1..HEAD
-[0.0.1]: https://codeberg.org/lingfra/ansible-collection-lingfra-shell/releases/tag/v0.0.1
+- XDG base directory compliant paths
+- Support for Debian and Arch Linux
+- Enhanced completion menu
+- History search with fzf
+- Syntax highlight for commands
+- `LS_COLORS` with vivid
+- Colorizing alias for some commands
+- Directory stack
+
+[Unreleased]: https://codeberg.org/lingfra/ansible-collection-lingfra-shell/compare/v0.1.0..HEAD
+[0.1.0]: https://codeberg.org/lingfra/ansible-collection-lingfra-shell/releases/tag/v0.1.0
