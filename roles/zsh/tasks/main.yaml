@@ -13,6 +13,12 @@
       paths:
         - "vars"
 
+- name: "Gather available users from /etc/passwd"
+  ansible.builtin.getent:
+    database: passwd
+  when:
+    - zsh_user_list | length > 0
+
 # ---------- Installation ----------
 
 - name: "Install ZSH packages"
@@ -25,6 +31,17 @@
     - zsh_install
 
 # ---------- Configuration ----------
+
+- name: "Set ZSH as default shell"
+  ansible.builtin.user:
+    name: "{{ user }}"
+    shell: "{{ zsh_bin_path }}"
+  become: true
+  loop: "{{ zsh_user_list }}"
+  loop_control:
+    loop_var: user
+  when:
+    - user in getent_passwd.keys()
 
 - name: "Ensure /etc/zsh exist"
   ansible.builtin.file:

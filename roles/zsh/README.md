@@ -49,6 +49,12 @@ Type: `bool`, Default: `True`.
 
 Whether the ZSH system packages should be installed or not.
 
+#### `zsh_user_list`
+
+Type: `list of 'str'`, Default: `[]`.
+
+Set ZSH as default shell for all users specified in this list. It is recommended to use this only if no other mechanism controls the management of users. If one specified account does not exist on the system it will be silently skipped.
+
 ## Dependencies
 
 None.
