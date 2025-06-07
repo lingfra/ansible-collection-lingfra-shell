@@ -148,6 +148,15 @@ elif [ -f /usr/share/doc/fzf/examples/completion.zsh ]; then
   . /usr/share/doc/fzf/examples/completion.zsh
 fi
 
+# ---------- History Substring Search ----------
+
+if [ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
+  # Arch Linux path
+	. /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+	bindkey '^P' history-substring-search-up
+	bindkey '^N' history-substring-search-down
+fi
+
 # ---------- Syntax Highlighting ----------
 
 # Should be sourced at a very late, see:

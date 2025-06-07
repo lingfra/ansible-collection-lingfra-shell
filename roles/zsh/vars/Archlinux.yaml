@@ -6,3 +6,4 @@ zsh_install_package_list:
   - zsh
   - zsh-autosuggestions
   - zsh-syntax-highlighting
+  - zsh-history-substring-search
