@@ -20,5 +20,5 @@ Adds the zsh role, with the following features:
 - Colorizing alias for some commands
 - Directory stack
 
-[Unreleased]: https://codeberg.org/lingfra/ansible-collection-lingfra-shell/compare/v0.1.0..HEAD
-[0.1.0]: https://codeberg.org/lingfra/ansible-collection-lingfra-shell/releases/tag/v0.1.0
+[Unreleased]: https://github.com/lingfra/ansible-collection-lingfra-shell/compare/v0.1.0..HEAD
+[0.1.0]: https://github.com/lingfra/ansible-collection-lingfra-shell/releases/tag/v0.1.0

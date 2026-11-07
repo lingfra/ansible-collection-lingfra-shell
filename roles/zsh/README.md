@@ -104,5 +104,5 @@ None.
 This role is part of the Ansible collection [lingfra.shell][collection_url].
 For more information, see the collections [README](../../README.md) file.
 
-[collection_url]: https://codeberg.org/lingfra/ansible-collection-lingfra-shell
+[collection_url]: https://github.com/lingfra/ansible-collection-lingfra-shell
 <!-- END_ANSIBLE_DOCS -->
