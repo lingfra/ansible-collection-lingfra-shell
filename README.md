@@ -1,18 +1,5 @@
 # Ansible Collection - lingfra.shell
 
-> [!WARNING]
-> **This repository has moved to GitHub:
-> [github.com/lingfra/ansible-collection-lingfra-shell](https://github.com/lingfra/ansible-collection-lingfra-shell).**
-> The Codeberg repository is no longer maintained.
->
-> In July 2026 the Codeberg e.V. assembly
-> [voted](https://blog.codeberg.org/protecting-our-floss-commons-from-llms.html)
-> to extend Codeberg's Terms of Use with
-> [§ 2 (1) 7](https://codeberg.org/Codeberg/org/commit/71149c7fc95ccfeae36109b5cddca339e4aa1473),
-> which prohibits sharing projects that mostly consist of code written by
-> generative AI tools such as Claude or OpenAI Codex. AI assistance is used for
-> this repository, so it moved to GitHub.
-
 An Ansible collection to enroll a system wide shell configuration.
 
 ## Included Content
