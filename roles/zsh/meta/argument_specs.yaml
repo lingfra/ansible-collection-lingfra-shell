@@ -8,7 +8,7 @@ argument_specs:
       - "This role is used to add a system wide ZSH configuration in `/etc/zsh`."
       - "It is intended to make a compromise between usability and a lightweight design."
     author:
-      - "lingling"
+      - "Stella Kemmerling"
     options:
       zsh_conf_enable_newuser_wizard:
         type: "bool"
