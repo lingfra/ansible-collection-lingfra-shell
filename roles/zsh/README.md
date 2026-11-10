@@ -38,10 +38,7 @@ Type: `str`, Default: `emacs`.
 
 The keybindings mode for ZSH.
 
-**Choices:**
-
-- `emacs`
-- `vi`
+_Choices:_ `emacs`, `vi`
 
 #### `zsh_conf_vivid_theme`
 
@@ -49,39 +46,7 @@ Type: `str`, Default: `one-dark`.
 
 Theme for [vivid](https://github.com/sharkdp/vivid). The coices selection is for vivid 0.10. Some themes maybe not available on distributions providing an older vivid version.
 
-**Choices:**
-
-- `alabaster_dark`
-- `ayu`
-- `catppuccin-frappe`
-- `catppuccin-latte`
-- `catppuccin-macchiato`
-- `catppuccin-mocha`
-- `dracula`
-- `gruvbox-dark`
-- `gruvbox-dark-hard`
-- `gruvbox-dark-soft`
-- `gruvbox-light`
-- `gruvbox-light-hard`
-- `gruvbox-light-soft`
-- `iceberg-dark`
-- `jellybeans`
-- `lava`
-- `modus-operandi`
-- `molokai`
-- `nord`
-- `one-dark`
-- `one-light`
-- `rose-pine`
-- `rose-pine-dawn`
-- `rose-pine-moon`
-- `snazzy`
-- `solarized-dark`
-- `solarized-light`
-- `tokyonight-moon`
-- `tokyonight-night`
-- `tokyonight-storm`
-- `zenburn`
+_Choices:_ `alabaster_dark`, `ayu`, `catppuccin-frappe`, `catppuccin-latte`, `catppuccin-macchiato`, `catppuccin-mocha`, `dracula`, `gruvbox-dark`, `gruvbox-dark-hard`, `gruvbox-dark-soft`, `gruvbox-light`, `gruvbox-light-hard`, `gruvbox-light-soft`, `iceberg-dark`, `jellybeans`, `lava`, `modus-operandi`, `molokai`, `nord`, `one-dark`, `one-light`, `rose-pine`, `rose-pine-dawn`, `rose-pine-moon`, `snazzy`, `solarized-dark`, `solarized-light`, `tokyonight-moon`, `tokyonight-night`, `tokyonight-storm`, `zenburn`
 
 #### `zsh_install`
 
@@ -91,7 +56,7 @@ Whether the ZSH system packages should be installed or not.
 
 #### `zsh_user_list`
 
-Type: `list of 'str'`, Default: `[]`.
+Type: list of `str`, Default: `[]`.
 
 Set ZSH as default shell for all users specified in this list. It is recommended to use this only if no other mechanism controls the management of users. If one specified account does not exist on the system it will be silently skipped.
 
